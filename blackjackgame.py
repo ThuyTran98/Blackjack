@@ -65,18 +65,40 @@ def hardHand(handVal, dealerCard):
 # This function looks at the player's cards, the dealer's cards, and the player policy to make the decision of Hit or Stand
 def hitOrStand(playerCards, dealerCards, policy):
     handValues = calculateHandValues(playerCards)
+    
+    #Stick >= 17
     if policy == 0:
         for i in handValues:
             # Stand >= 17
             if i >= 17:
                 return "STAND"
         return "HIT"
-
-    else:
+    
+    #Stick >= Hard 17
+    elif policy == 1:
         if handValues[len(handValues) - 1] >= 17:
             return "STAND"
         else:
             return "HIT"
+    
+    #Always stick
+    elif policy == 2:                                 
+        return "STAND"
+    
+    #Hit <= 21
+    elif policy == 3:                                 
+        if handValues[0] < 21:
+            return "HIT"
+        return "STAND"
+        
+    #Copy the dealer's strategy 
+    else:
+        if len(handValues) > 1 and handValues[0] == 17:
+            return "HIT"
+        for i in handValues:
+            if i >= 17:
+                return "STAND"
+        return "HIT"        
 
 # Pick cards from a single deck (whenever a card is picked, the total number of cards in the deck decreases accordingly)
 # Pick a card from the available cards and swaps that card with the first card available in the deck
