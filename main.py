@@ -14,11 +14,20 @@ if __name__ == "__main__":
     while True:
         print("Choose policy: 0 - Stick >= 17")
         print("               1 - Stick >= Hard 17")
+        print("               2 - Always Stick")
+        print("               3 - Hit <= 21")
+        print("               4 - Copy the dealer's strategy")
         inputPolicy = int(input("Enter policy: "))
         if inputPolicy == 0:
             break
         if inputPolicy == 1:
             break
+        if inputPolicy == 2:
+            break        
+        if inputPolicy == 3:
+            break
+        if inputPolicy == 4:
+            break        
         print("Invalid Input!\n")
 
     # Player chooses deck type
